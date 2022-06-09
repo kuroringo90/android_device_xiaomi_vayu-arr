@@ -11,10 +11,25 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/vayu/device.mk)
 
-# Inherit common ArrowOS configurations
-$(call inherit-product, vendor/arrow/config/common.mk)
+# QuickTap
+TARGET_SUPPORTS_QUICK_TAP := true
 
-PRODUCT_NAME := arrow_vayu
+# Pixel Charger
+USE_PIXEL_CHARGER_IMAGES := true
+
+# Bootanimation
+TARGET_BOOT_ANIMATION_RES := 1080
+
+# FaceUnlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
+# GApps
+WITH_GMS := true
+
+TARGET_INCLUDE_LIVE_WALLPAPERS := true
+
+# Device identifier. This must come after all inclusions.
+PRODUCT_NAME := vayu
 PRODUCT_DEVICE := vayu
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := Poco X3 Pro
@@ -28,8 +43,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_MODEL=M2102J20SI
 
 BUILD_FINGERPRINT := Xiaomi/vayu_global/vayu:12/RKQ1.200826.002/V13.0.3.0.SJUMIXM:user/release-keys
-
-# ArrowOS additions
-DEVICE_MAINTAINER := kubersharma001
-$(call inherit-product-if-exists, vendor/lawnchair/lawnchair.mk)
 
